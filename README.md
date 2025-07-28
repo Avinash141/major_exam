@@ -42,6 +42,10 @@ python src/predict.py
 pytest tests/
 ```
 
+
+Name: Avinash Singh
+Roll Number: G24ai1027
+
 ### Docker
 ```bash
 docker build -t mlops-assignment .
