@@ -33,13 +33,25 @@ The project showcases modern MLOps practices including model versioning, automat
 
 | Metric | Original Model | Quantized Model | Difference |
 |--------|---------------|-----------------|------------|
-| **R² Score** | ~0.XXXX | ~0.XXXX | < 0.001 (minimal) |
-| **MSE** | Baseline | Slightly higher | Negligible increase |
-| **Prediction Accuracy** | 100% | 99.9%+ | < 0.1% degradation |
+| **R² Score** | 0.999999 | 0.998317 | 0.001682 |
+| **MSE (Training)** | 0.0093 | N/A | Post-training quantization |
+| **MSE (Test)** | 0.0095 | N/A | Post-training quantization |
+| **Max Prediction Diff** | Baseline | 16.196 | Absolute difference |
+| **Mean Prediction Diff** | Baseline | 4.142 | Average absolute difference |
 | **Model Loading Time** | Standard | Faster | Smaller file size |
 | **Memory Footprint** | 100% | 12.5% | 87.5% reduction |
 
-*Note: Actual performance metrics are generated during model training and quantization processes.*
+### Important Notes on R² Score
+
+**R² Score Range**: R² can range from -∞ to 1.0
+- **R² = 1.0**: Perfect predictions (our original model achieves 0.999999)
+- **R² = 0.0**: Model performs as well as predicting the mean
+- **R² < 0.0**: Model performs worse than predicting the mean (possible with poor models)
+
+In this implementation:
+- Original model R² = **0.999999** (near-perfect performance)
+- Quantized model R² = **0.998317** (excellent performance with minimal degradation)
+- Difference = **0.001682** (very small impact from quantization)
 
 ## Project Structure
 ```
